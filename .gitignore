@@ -1,0 +1,30 @@
+# Python environments
+venv/
+env/
+.env
+__pycache__/
+*.py[cod]
+
+# YOLOv8 outputs
+runs/
+
+# Datasets (Can be excluded if they are too large)
+train/
+test/
+valid/
+README.dataset.txt
+README.roboflow.txt
+
+# Model weights
+*.pt
+*.onnx
+
+# Video files (too large for GitHub)
+*.mp4
+*.avi
+*.mkv
+*.m4a
+
+# OS Files
+.DS_Store
+Thumbs.db

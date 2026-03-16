@@ -1,0 +1,14 @@
+path: c:\Users\gonza\Downloads\HuesosV2.v2-huesosv2343.yolov8
+train: train/images
+val: valid/images
+test: test/images
+
+nc: 1
+names: ['bones']
+
+roboflow:
+  workspace: davids-workspace-31je5
+  project: huesosv2
+  version: 2
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/davids-workspace-31je5/huesosv2/dataset/2
