@@ -1,54 +1,56 @@
-# YOLOv8 Bone Segmentation Project
+# YOLOv8 Bone Segmentation
 
-Este proyecto entrena y utiliza un modelo de segmentación basado en **YOLOv8** para detectar y dibujar los contornos de los huesos en vídeos.
+## ðŸ¦´ DescripciÃ³n
 
-## Archivos del Proyecto
+Sistema de segmentaciÃ³n de huesos en vÃ­deo basado en **YOLOv8 (Ultralytics)**. Entrena un modelo de segmentaciÃ³n sobre un dataset etiquetado y aplica inferencia para dibujar contornos Ã³seos en tiempo real sobre fotogramas de vÃ­deo. Incluye conversiÃ³n a formato compatible con WhatsApp.
 
-El repositorio contiene los siguientes scripts principales:
+## ðŸš€ Stack TecnolÃ³gico
 
-- `train_yolo.py`: Script para entrenar el modelo de segmentación de YOLOv8 usando las imágenes del dataset (configuradas en `data.yaml`).
-- `dibujar_contorno.py`: Toma un vídeo de entrada y aplica el modelo previamente entrenado (`runs/segment/train/weights/best.pt`) para detectar huesos fotograma a fotograma, dibujando un contorno de color morado/rosa.
-- `convertir_whatsapp.py`: Toma el vídeo de salida de las detecciones y lo codifica usando `h264` y audio `aac` para que sea totalmente compatible si se desea enviar por WhatsApp.
+| TecnologÃ­a | Uso |
+|-----------|-----|
+| **Python 3** | Lenguaje principal |
+| **Ultralytics YOLOv8** | Modelo de segmentaciÃ³n |
+| **OpenCV** | Procesamiento de vÃ­deo e imagen |
+| **NumPy** | Operaciones matriciales |
+| **MoviePy** | ConversiÃ³n y codificaciÃ³n de vÃ­deo |
 
-## Requisitos
+## ðŸ“ Scripts
 
-Asegúrate de tener instalado Python 3 y crear un entorno virtual (opcional pero recomendado). Instala los requisitos con:
+| Script | FunciÃ³n |
+|--------|---------|
+| `train_yolo.py` | Entrena el modelo de segmentaciÃ³n con el dataset |
+| `dibujar_contorno.py` | Aplica el modelo entrenado a un vÃ­deo y dibuja contornos |
+| `convertir_whatsapp.py` | Codifica el vÃ­deo final (h264 + aac) para WhatsApp |
+
+## ðŸ› ï¸ Uso
 
 ```bash
+# Instalar dependencias
 pip install -r requirements.txt
+
+# Entrenar modelo
+python train_yolo.py
+
+# Inferencia sobre vÃ­deo
+python dibujar_contorno.py
+
+# Convertir para WhatsApp
+python convertir_whatsapp.py
 ```
 
-*(Esto instalará `ultralytics`, `opencv-python`, `numpy` y `moviepy`)*
+## ðŸ“¦ Dataset
 
-## Uso
+El dataset se estructura en las carpetas `train/`, `valid/` y `test/` con imÃ¡genes etiquetadas para segmentaciÃ³n Ã³sea. ConfiguraciÃ³n en `data.yaml`.
 
-1. **Entrenamiento**:
-   Si necesitas reentrenar el modelo con tu dataset, simplemente ejecuta:
-   ```bash
-   python train_yolo.py
-   ```
-   Esto generará una carpeta `runs/` con los pesos del modelo resultante.
+## ðŸ“Œ Aplicaciones
 
-2. **Inferencia en vídeo**:
-   Asegúrate de tener un vídeo de entrada (por defecto `WhatsApp Video 2026-03-12 at 09.20.13 (2).mp4`) y el modelo entrenado, luego ejecuta:
-   ```bash
-   python dibujar_contorno.py
-   ```
-   El vídeo de salida se llamará `WhatsApp_contorno.mp4`.
+Esta tecnologÃ­a tiene aplicaciÃ³n directa en:
+- **Medicina deportiva** â€” anÃ¡lisis de movimiento y biomecÃ¡nica
+- **InvestigaciÃ³n anatÃ³mica** â€” estudio de estructuras Ã³seas
+- **EducaciÃ³n** â€” visualizaciÃ³n interactiva del sistema esquelÃ©tico
 
-3. **Conversión para WhatsApp**:
-   Si deseas enviar el archivo por WhatsApp y asegurarte de que se reproduzca correctamente, convierte el vídeo procesado usando:
-   ```bash
-   python convertir_whatsapp.py
-   ```
-   Generará un vídeo final llamado `WhatsApp_contorno_whatsapp.mp4`.
+## âš™ï¸ Requisitos
 
-## Notas para GitHub
-
-Se incluye un archivo `.gitignore` para evitar subir:
-- El entorno virtual (`venv/`)
-- Los vídeos y audios (`*.mp4`, `*.m4a`) que suelen ser archivos muy pesados.
-- Las imágenes del dataset (`train/`, `valid/`, `test/`).
-- Los pesos del modelo (`*.pt`) por su peso.
-
-*Si quieres incluir los pesos del modelo en GitHub pese a su tamaño o modificar los archivos que se ignoran, asegúrate de editar el archivo `.gitignore`.*
+- Python 3.8+
+- GPU recomendada para entrenamiento (CPU funciona para inferencia)
+- Webcam o vÃ­deos de entrada
